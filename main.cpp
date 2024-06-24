@@ -1,43 +1,59 @@
-/* ************************************************************************
-> File Name:     main.cpp
-> Author:        程序员Carl
-> 微信公众号:    代码随想录
-> Created Time:  Sun Dec  2 20:21:41 2018
-> Description:   
- ************************************************************************/
 #include <iostream>
 #include "skiplist.h"
 #define FILE_PATH "./store/dumpFile"
 
 int main() {
-
-    // 键值中的key用int型，如果用其他类型，需要自定义比较函数
-    // 而且如果修改key的类型，同时需要修改skipList.load_file函数
     SkipList<int, std::string> skipList(6);
-	skipList.insert_element(1, "学"); 
-	skipList.insert_element(3, "算法"); 
-	skipList.insert_element(7, "认准"); 
-	skipList.insert_element(8, "微信公众号：代码随想录"); 
-	skipList.insert_element(9, "学习"); 
-	skipList.insert_element(19, "算法不迷路"); 
-	skipList.insert_element(19, "赶快关注吧你会发现详见很晚！"); 
+    skipList.load_file();
 
-    std::cout << "skipList size:" << skipList.size() << std::endl;
+    int choice, key;
+    std::string value;
+    int start_key, end_key;
 
-    skipList.dump_file();
+    while (true) {
+        std::cout << "\n1. Insert element" << std::endl;
+        std::cout << "2. Delete element" << std::endl;
+        std::cout << "3. Search element" << std::endl;
+        std::cout << "4. Display list" << std::endl;
+        std::cout << "5. Range search elements" << std::endl;
+        std::cout << "6. Exit" << std::endl;
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
 
-    // skipList.load_file();
-
-    skipList.search_element(9);
-    skipList.search_element(18);
-
-
-    skipList.display_list();
-
-    skipList.delete_element(3);
-    skipList.delete_element(7);
-
-    std::cout << "skipList size:" << skipList.size() << std::endl;
-
-    skipList.display_list();
+        switch (choice) {
+            case 1:
+                std::cout << "Enter key and value to insert: ";
+                std::cin >> key >> value;
+                skipList.insert_element(key, value);
+                skipList.dump_file();
+                break;
+            case 2:
+                std::cout << "Enter key to delete: ";
+                std::cin >> key;
+                skipList.delete_element(key);
+                skipList.dump_file();
+                break;
+            case 3:
+                std::cout << "Enter key to search: ";
+                std::cin >> key;
+                if (!skipList.search_element(key)) {
+                    std::cout << "Element not found" << std::endl;
+                }
+                break;
+            case 4:
+                skipList.display_list();
+                break;
+            case 5:
+                std::cout << "Enter start key and end key for range search: ";
+                std::cin >> start_key >> end_key;
+                skipList.find_range(start_key, end_key);
+                break;
+            case 6:
+                std::cout << "Exiting..." << std::endl;
+                return 0;
+            default:
+                std::cout << "Invalid choice, please try again!" << std::endl;
+        }
+    }
+    return 0;
 }

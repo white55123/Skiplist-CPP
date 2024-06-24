@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/zl763142485/桌面/kv_test/test1/Skiplist-CPP/main.cpp
+iostream
+-
+skiplist.h
+/home/zl763142485/桌面/kv_test/test1/Skiplist-CPP/skiplist.h
+
+/home/zl763142485/桌面/kv_test/test1/Skiplist-CPP/skiplist.h
+cstdlib
+-
+cmath
+-
+cstring
+-
+mutex
+-
+fstream
+-
+vector
+-
+iostream
+-
+SFML/Graphics.hpp
+-
+
