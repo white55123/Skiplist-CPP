@@ -40,9 +40,8 @@ qps:18.41w
 
 # code coverage report 
 
-gtest and  lcov
 
-[](file:///Users/sunxiuyang/Downloads/tmp/result/home/users/sunxiuyang/workspace/baidu/personal-code/sunxiuyang/index.html)
+
 
 how to getcoverage report  
 
@@ -57,8 +56,8 @@ genhtml -o result skiplist_test.info
 Just include skiplist.h in your code
 
 ```
+cmake ..
 make            // complie demo main.cpp
-./bin/main      // run 
 ```
 
 Test performance data 
